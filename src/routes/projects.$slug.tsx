@@ -57,7 +57,7 @@ function ProjectDetail() {
 
             <h2 className="font-display text-3xl text-[var(--forest)] mt-16 mb-6">Implementation</h2>
             <div className="flex flex-wrap gap-2">
-              {project.implementations.map(it => <span key={it} className="impl-tag">{it}</span>)}
+              {project.implementations.map((it: string) => <span key={it} className="impl-tag">{it}</span>)}
             </div>
 
             <h2 className="font-display text-3xl text-[var(--forest)] mt-16 mb-6">Scope & Approach</h2>
