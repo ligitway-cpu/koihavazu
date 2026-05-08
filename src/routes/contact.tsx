@@ -3,26 +3,29 @@ import { useState, type FormEvent } from "react";
 import { Shell } from "@/components/Shell";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
+import { useT } from "@/lib/lang-context";
 import heroImg from "@/assets/hero-jwmarriott.jpg";
 import { Check, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Işık Landscape Global" },
-      { name: "description", content: "Get in touch with Işık Landscape for landscape design and contracting inquiries. Based in Istanbul, working across Turkey." },
+      { title: "İletişim | Contact — Işık Landscape Global" },
+      { name: "description", content: "Peyzaj tasarımı ve uygulama sorularınız için bizimle iletişime geçin." },
     ],
   }),
   component: ContactPage,
 });
 
 function ContactPage() {
+  const t = useT();
   const [sent, setSent] = useState(false);
   const onSubmit = (e: FormEvent) => { e.preventDefault(); setSent(true); };
+  const types = t("contact.types") as string[];
 
   return (
     <Shell transparentNav>
-      <PageHeader eyebrow="Contact" title="Let's create something extraordinary." breadcrumb={[{label:"Home",to:"/"},{label:"Contact"}]} image={heroImg} />
+      <PageHeader eyebrow={t("contact.eyebrow")} title={t("contact.title")} breadcrumb={[{label:"__home__",to:"/"},{label:t("contact.breadcrumb")}]} image={heroImg} />
 
       <section className="section-y">
         <div className="container-x grid lg:grid-cols-12 gap-16">
@@ -30,40 +33,35 @@ function ContactPage() {
             {sent ? (
               <div className="bg-[var(--sand)] p-12 text-center rounded-sm border border-[var(--copper)]">
                 <div className="w-16 h-16 rounded-full bg-[var(--copper)] text-white flex items-center justify-center mx-auto"><Check size={28}/></div>
-                <h2 className="font-display text-3xl text-[var(--forest)] mt-6">Thank you.</h2>
-                <p className="mt-3 text-[var(--bark)]">Your message has been received. Our team will respond within two business days.</p>
+                <h2 className="font-display text-3xl text-[var(--forest)] mt-6">{t("contact.thanks_h")}</h2>
+                <p className="mt-3 text-[var(--bark)]">{t("contact.thanks_b")}</p>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-6">
-                <p className="label-eyebrow mb-4">Project Inquiry</p>
-                <h2 className="text-display text-[var(--forest)] mb-8">Tell us about your project.</h2>
+                <p className="label-eyebrow mb-4">{t("contact.project_inquiry")}</p>
+                <h2 className="text-display text-[var(--forest)] mb-8">{t("contact.tell_us")}</h2>
                 <div className="grid sm:grid-cols-2 gap-6">
-                  <Field label="Your Name" name="name" required />
-                  <Field label="Email Address" name="email" type="email" required />
+                  <Field label={t("contact.name")} name="name" required />
+                  <Field label={t("contact.email")} name="email" type="email" required />
                 </div>
                 <div className="grid sm:grid-cols-2 gap-6">
-                  <Field label="Phone (optional)" name="phone" type="tel" />
+                  <Field label={t("contact.phone")} name="phone" type="tel" />
                   <div>
-                    <label className="block text-xs tracking-widest uppercase text-[var(--bark)] mb-2">Project Type</label>
+                    <label className="block text-xs tracking-widest uppercase text-[var(--bark)] mb-2">{t("contact.project_type")}</label>
                     <select required className="w-full bg-transparent border-b border-[var(--fern)] py-3 text-[var(--forest)] focus:outline-none focus:border-[var(--copper)]">
-                      <option>Residential</option>
-                      <option>Hospitality / Hotel</option>
-                      <option>Commercial</option>
-                      <option>Public / Infrastructure</option>
-                      <option>Maintenance</option>
-                      <option>Other</option>
+                      {types.map((tp) => <option key={tp}>{tp}</option>)}
                     </select>
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs tracking-widest uppercase text-[var(--bark)] mb-2">Message</label>
+                  <label className="block text-xs tracking-widest uppercase text-[var(--bark)] mb-2">{t("contact.message")}</label>
                   <textarea required rows={6} className="w-full bg-transparent border-b border-[var(--fern)] py-3 text-[var(--forest)] focus:outline-none focus:border-[var(--copper)]" />
                 </div>
                 <label className="flex items-start gap-3 text-sm text-[var(--bark)]">
                   <input type="checkbox" required className="mt-1 accent-[var(--copper)]" />
-                  <span>I agree to the <a href="/privacy" className="text-[var(--copper)]">Privacy Policy</a> and consent to being contacted.</span>
+                  <span>{t("contact.consent_pre")}<a href="/privacy" className="text-[var(--copper)]">{t("contact.consent_link")}</a>{t("contact.consent_post")}</span>
                 </label>
-                <button type="submit" className="btn btn-copper">Send Message</button>
+                <button type="submit" className="btn btn-copper">{t("common.send_message")}</button>
               </form>
             )}
           </Reveal>
@@ -71,8 +69,8 @@ function ContactPage() {
           <Reveal delay={0.15} className="lg:col-span-5">
             <div className="bg-[var(--forest)] text-white p-10 rounded-sm space-y-8">
               <div>
-                <p className="label-eyebrow !text-[var(--bronze)] mb-4">Headquarters</p>
-                <p className="flex items-start gap-3 text-white/85"><MapPin size={18} className="mt-1 flex-none text-[var(--bronze)]"/>Orhan Veli Kanık Cad. No:72, K:2<br/>34810 Martı Plaza, Kavacık<br/>Beykoz / Istanbul</p>
+                <p className="label-eyebrow !text-[var(--bronze)] mb-4">{t("contact.hq")}</p>
+                <p className="flex items-start gap-3 text-white/85"><MapPin size={18} className="mt-1 flex-none text-[var(--bronze)]"/><span style={{whiteSpace:"pre-line"}}>{t("contact.hq_addr")}</span></p>
               </div>
               <div className="grid grid-cols-1 gap-3">
                 <a href="tel:+902164041055" className="flex items-center gap-3 hover:text-[var(--bronze)]"><Phone size={16}/>+90 216 404 10 55</a>
@@ -80,7 +78,7 @@ function ContactPage() {
                 <a href="mailto:info@isikpeyzajglobal.com" className="flex items-center gap-3 hover:text-[var(--bronze)]"><Mail size={16}/>info@isikpeyzajglobal.com</a>
               </div>
               <div>
-                <p className="label-eyebrow !text-[var(--bronze)] mb-4">Nurseries</p>
+                <p className="label-eyebrow !text-[var(--bronze)] mb-4">{t("contact.nurseries_label")}</p>
                 <ul className="space-y-3 text-sm text-white/80">
                   <li><span className="text-[var(--bronze)]">Riva (Beykoz):</span> (216) 433 32 42</li>
                   <li><span className="text-[var(--bronze)]">Yalova:</span> (549) 646 86 96</li>

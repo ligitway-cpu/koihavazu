@@ -4,14 +4,15 @@ import { Shell } from "@/components/Shell";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { PROJECTS, type Category } from "@/lib/projects";
+import { useT } from "@/lib/lang-context";
 import heroImg from "@/assets/hero-epique.jpg";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
-      { title: "Landscape Projects Portfolio | Işık Landscape Global" },
-      { name: "description", content: "Browse 12 landmark landscape projects across Istanbul, Bodrum, İzmir, and Turkey — residential, hospitality, commercial, and public spaces." },
+      { title: "Projeler | Projects — Işık Landscape" },
+      { name: "description", content: "İstanbul, Bodrum ve İzmir'de 12 önemli peyzaj projesi." },
     ],
   }),
   component: ProjectsPage,
@@ -20,12 +21,13 @@ export const Route = createFileRoute("/projects/")({
 const FILTERS: ("All" | Category)[] = ["All", "Residential", "Hospitality", "Commercial", "Public / Mixed-Use"];
 
 function ProjectsPage() {
+  const t = useT();
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
   const filtered = useMemo(() => filter === "All" ? PROJECTS : PROJECTS.filter(p => p.category === filter), [filter]);
 
   return (
     <Shell transparentNav>
-      <PageHeader eyebrow="Portfolio" title="Twelve landmark projects across Turkey." breadcrumb={[{label:"Home",to:"/"},{label:"Projects"}]} image={heroImg} />
+      <PageHeader eyebrow={t("projects_page.eyebrow")} title={t("projects_page.title")} breadcrumb={[{label:"__home__",to:"/"},{label:t("projects_page.breadcrumb")}]} image={heroImg} />
 
       <section className="section-y">
         <div className="container-x">
@@ -38,7 +40,7 @@ function ProjectsPage() {
                   filter === f ? "bg-[var(--forest)] text-white border-[var(--forest)]" : "border-[var(--fern)] text-[var(--bark)] hover:border-[var(--copper)] hover:text-[var(--copper)]"
                 }`}
               >
-                {f}
+                {t(`categories.${f}`)}
               </button>
             ))}
           </div>
@@ -52,10 +54,10 @@ function ProjectsPage() {
                     <div className="absolute inset-0 bg-[var(--forest)]/0 group-hover:bg-[var(--forest)]/30 transition-colors duration-500" />
                   </div>
                   <div className="pt-6">
-                    <div className="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--sage)]">{p.category} · {p.year}</div>
+                    <div className="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--sage)]">{t(`categories.${p.category}`)} · {p.year}</div>
                     <h3 className="font-display text-2xl text-[var(--forest)] mt-2 group-hover:text-[var(--copper)] transition-colors">{p.title}</h3>
                     <p className="text-sm text-[var(--bark)] mt-1">{p.location}</p>
-                    <span className="link-arrow text-sm mt-4 inline-flex">View Project <ArrowRight size={14}/></span>
+                    <span className="link-arrow text-sm mt-4 inline-flex">{t("common.view_project")} <ArrowRight size={14}/></span>
                   </div>
                 </Link>
               </Reveal>
