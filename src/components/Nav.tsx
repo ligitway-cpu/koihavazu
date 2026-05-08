@@ -1,18 +1,21 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-
-const NAV = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about-us" },
-  { label: "Legacy", to: "/quarter-century" },
-  { label: "Services", to: "/services" },
-  { label: "Projects", to: "/projects" },
-  { label: "Certificates", to: "/certificates" },
-  { label: "Contact", to: "/contact" },
-];
+import { useT } from "@/lib/lang-context";
+import { LanguageToggle } from "./LanguageToggle";
 
 export function Nav() {
+  const t = useT();
+  const NAV = [
+    { label: t("nav.home"), to: "/" },
+    { label: t("nav.about"), to: "/about-us" },
+    { label: t("nav.legacy"), to: "/quarter-century" },
+    { label: t("nav.services"), to: "/services" },
+    { label: t("nav.projects"), to: "/projects" },
+    { label: t("nav.certificates"), to: "/certificates" },
+    { label: t("nav.contact"), to: "/contact" },
+  ];
+
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { location } = useRouterState();
@@ -58,8 +61,8 @@ export function Nav() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <span className="text-[0.7rem] tracking-widest text-white/60">TR · EN</span>
-            <Link to="/contact" className="btn btn-copper !py-2.5 !px-5 text-[0.7rem]">Get in Touch</Link>
+            <LanguageToggle />
+            <Link to="/contact" className="btn btn-copper !py-2.5 !px-5 text-[0.7rem]">{t("nav.cta")}</Link>
           </div>
 
           <button
@@ -93,7 +96,10 @@ export function Nav() {
               {n.label}
             </Link>
           ))}
-          <Link to="/contact" className="btn btn-copper mt-6 w-full">Get in Touch</Link>
+          <div className="mt-6 flex items-center justify-between">
+            <LanguageToggle />
+            <Link to="/contact" className="btn btn-copper">{t("nav.cta")}</Link>
+          </div>
         </nav>
       </div>
     </>
