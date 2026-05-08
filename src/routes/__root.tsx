@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Landscape Services throughout turkiye" },
+      { name: "description", content: "The best landscape services in Turkiye" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Landscape Services throughout turkiye" },
+      { property: "og:description", content: "The best landscape services in Turkiye" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Landscape Services throughout turkiye" },
+      { name: "twitter:description", content: "The best landscape services in Turkiye" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/184df496-18f3-4241-8a5e-70217a51461b/id-preview-473a7bc1--90604ceb-3483-4c6e-bfdf-4b0ff2955e13.lovable.app-1778193834648.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/184df496-18f3-4241-8a5e-70217a51461b/id-preview-473a7bc1--90604ceb-3483-4c6e-bfdf-4b0ff2955e13.lovable.app-1778193834648.png" },
     ],
     links: [
       {
