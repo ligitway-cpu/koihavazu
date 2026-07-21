@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { useT } from "@/lib/lang-context";
 import heroImg from "@/assets/hero-jwmarriott.jpg";
-import { Check, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Check, Mail, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -73,17 +73,7 @@ function ContactPage() {
                 <p className="flex items-start gap-3 text-white/85"><MapPin size={18} className="mt-1 flex-none text-[var(--bronze)]"/><span style={{whiteSpace:"pre-line"}}>{t("contact.hq_addr")}</span></p>
               </div>
               <div className="grid grid-cols-1 gap-3">
-                <a href="tel:+902164041055" className="flex items-center gap-3 hover:text-[var(--bronze)]"><Phone size={16}/>+90 216 404 10 55</a>
-                <a href="https://wa.me/905335906050" className="flex items-center gap-3 hover:text-[var(--bronze)]"><MessageCircle size={16}/>WhatsApp +90 533 590 60 50</a>
                 <a href="mailto:info@isikpeyzajglobal.com" className="flex items-center gap-3 hover:text-[var(--bronze)]"><Mail size={16}/>info@isikpeyzajglobal.com</a>
-              </div>
-              <div>
-                <p className="label-eyebrow !text-[var(--bronze)] mb-4">{t("contact.nurseries_label")}</p>
-                <ul className="space-y-3 text-sm text-white/80">
-                  <li><span className="text-[var(--bronze)]">Riva (Beykoz):</span> (216) 433 32 42</li>
-                  <li><span className="text-[var(--bronze)]">Yalova:</span> (549) 646 86 96</li>
-                  <li><span className="text-[var(--bronze)]">Bodrum:</span> +90 538 056 39 92</li>
-                </ul>
               </div>
             </div>
           </Reveal>

@@ -7,7 +7,7 @@ import { PROJECTS, STATS, DIVISIONS, TIMELINE } from "@/lib/projects";
 import { useT, useLang } from "@/lib/lang-context";
 import missionImg from "@/assets/mission.jpg";
 import nurseryImg from "@/assets/nursery.jpg";
-import { ArrowRight, ArrowDown, Phone } from "lucide-react";
+import { ArrowRight, ArrowDown } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,13 +32,13 @@ function Hero() {
   }, []);
   return (
     <section className="relative h-[100dvh] min-h-[640px] overflow-hidden -mt-24">
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         <motion.div
           key={i}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.6, ease: "easeInOut" }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <div className="absolute inset-0 ken-burns" style={{ backgroundImage: `url(${SLIDES[i].image})`, backgroundSize: "cover", backgroundPosition: "center" }} />
@@ -152,8 +152,8 @@ function Mission() {
         </Reveal>
         <Reveal delay={0.2} className="lg:col-span-5">
           <div className="relative">
-            <img src={missionImg} alt="" className="w-full aspect-[4/5] object-cover rounded-sm shadow-2xl" />
-            <img src={nurseryImg} alt="" className="hidden md:block absolute -bottom-10 -left-10 w-48 aspect-[3/4] object-cover rounded-sm shadow-xl border-4 border-[var(--sand)]" />
+            <img src={missionImg} alt="" loading="lazy" decoding="async" className="w-full aspect-[4/5] object-cover rounded-sm shadow-2xl" />
+            <img src={nurseryImg} alt="" loading="lazy" decoding="async" className="hidden md:block absolute -bottom-10 -left-10 w-48 aspect-[3/4] object-cover rounded-sm shadow-xl border-4 border-[var(--sand)]" />
             <div className="absolute -top-6 -right-6 bg-[var(--copper)] text-white px-6 py-4 rounded-sm shadow-lg">
               <div className="font-mono text-[0.65rem] tracking-widest uppercase opacity-80">{t("home.established")}</div>
               <div className="font-display text-3xl">1998</div>
@@ -270,7 +270,7 @@ function CTA() {
           <p className="mt-6 text-white/75 text-lg max-w-2xl mx-auto">{t("home.cta_body")}</p>
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn btn-copper">{t("common.start_project")} <ArrowRight size={16} /></Link>
-            <a href="tel:+902164041055" className="btn btn-ghost-light"><Phone size={14} /> +90 216 404 10 55</a>
+            <Link to="/contact" className="btn btn-ghost-light">{t("nav.contact")}</Link>
           </div>
         </Reveal>
       </div>
@@ -283,10 +283,10 @@ function HomePage() {
     <Shell transparentNav>
       <Hero />
       <StatsBar />
-      <Mission />
-      <Divisions />
-      <FeaturedProjects />
-      <Timeline />
+      <div className="cv-auto"><Mission /></div>
+      <div className="cv-auto"><Divisions /></div>
+      <div className="cv-auto"><FeaturedProjects /></div>
+      <div className="cv-auto"><Timeline /></div>
       <CTA />
     </Shell>
   );

@@ -72,16 +72,26 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeSpeed;
   }
   h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; }
+  img { content-visibility: auto; }
   ::selection { background: var(--copper); color: white; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer utilities {
@@ -136,11 +146,13 @@
     color: var(--forest); letter-spacing: 0.04em;
   }
 
-  .ken-burns { animation: kenBurns 14s ease-in-out infinite alternate; }
-  @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.08); } }
+  .ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; will-change: transform; transform: translateZ(0); }
+  @keyframes kenBurns { from { transform: scale(1) translateZ(0); } to { transform: scale(1.06) translateZ(0); } }
 
   @keyframes drawLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   .draw-line { transform-origin: left; animation: drawLine 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+  .cv-auto { content-visibility: auto; contain-intrinsic-size: 800px; }
 
   .grain {
     position: relative;
