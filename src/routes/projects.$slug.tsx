@@ -3,7 +3,7 @@ import { Shell } from "@/components/Shell";
 import { Reveal } from "@/components/Reveal";
 import { PROJECTS } from "@/lib/projects";
 import { useT } from "@/lib/lang-context";
-import { ArrowLeft, ArrowRight, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
