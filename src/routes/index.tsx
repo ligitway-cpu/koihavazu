@@ -152,8 +152,8 @@ function Mission() {
         </Reveal>
         <Reveal delay={0.2} className="lg:col-span-5">
           <div className="relative">
-            <img src={missionImg} alt="" className="w-full aspect-[4/5] object-cover rounded-sm shadow-2xl" />
-            <img src={nurseryImg} alt="" className="hidden md:block absolute -bottom-10 -left-10 w-48 aspect-[3/4] object-cover rounded-sm shadow-xl border-4 border-[var(--sand)]" />
+            <img src={missionImg} alt="" loading="lazy" decoding="async" className="w-full aspect-[4/5] object-cover rounded-sm shadow-2xl" />
+            <img src={nurseryImg} alt="" loading="lazy" decoding="async" className="hidden md:block absolute -bottom-10 -left-10 w-48 aspect-[3/4] object-cover rounded-sm shadow-xl border-4 border-[var(--sand)]" />
             <div className="absolute -top-6 -right-6 bg-[var(--copper)] text-white px-6 py-4 rounded-sm shadow-lg">
               <div className="font-mono text-[0.65rem] tracking-widest uppercase opacity-80">{t("home.established")}</div>
               <div className="font-display text-3xl">1998</div>
