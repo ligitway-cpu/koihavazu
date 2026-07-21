@@ -283,10 +283,10 @@ function HomePage() {
     <Shell transparentNav>
       <Hero />
       <StatsBar />
-      <Mission />
-      <Divisions />
-      <FeaturedProjects />
-      <Timeline />
+      <div className="cv-auto"><Mission /></div>
+      <div className="cv-auto"><Divisions /></div>
+      <div className="cv-auto"><FeaturedProjects /></div>
+      <div className="cv-auto"><Timeline /></div>
       <CTA />
     </Shell>
   );
