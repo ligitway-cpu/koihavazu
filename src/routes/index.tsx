@@ -32,13 +32,13 @@ function Hero() {
   }, []);
   return (
     <section className="relative h-[100dvh] min-h-[640px] overflow-hidden -mt-24">
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         <motion.div
           key={i}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.6, ease: "easeInOut" }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <div className="absolute inset-0 ken-burns" style={{ backgroundImage: `url(${SLIDES[i].image})`, backgroundSize: "cover", backgroundPosition: "center" }} />
