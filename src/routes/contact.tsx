@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { useT } from "@/lib/lang-context";
 import heroImg from "@/assets/hero-jwmarriott.jpg";
-import { Check, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Check, Mail, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
