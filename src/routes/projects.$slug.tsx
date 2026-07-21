@@ -85,7 +85,7 @@ function ProjectDetail() {
               <div className="mt-8">
                 <p className="text-sm text-[var(--bark)] mb-4">{t("project_detail.inquire_similar")}</p>
                 <Link to="/contact" className="btn btn-copper w-full">{t("common.get_in_touch")}</Link>
-                <a href="tel:+902164041055" className="mt-3 flex items-center gap-2 justify-center text-sm text-[var(--forest)]"><Phone size={14}/>+90 216 404 10 55</a>
+                
               </div>
             </div>
           </Reveal>
