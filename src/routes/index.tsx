@@ -7,7 +7,7 @@ import { PROJECTS, STATS, DIVISIONS, TIMELINE } from "@/lib/projects";
 import { useT, useLang } from "@/lib/lang-context";
 import missionImg from "@/assets/mission.jpg";
 import nurseryImg from "@/assets/nursery.jpg";
-import { ArrowRight, ArrowDown, Phone } from "lucide-react";
+import { ArrowRight, ArrowDown } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
