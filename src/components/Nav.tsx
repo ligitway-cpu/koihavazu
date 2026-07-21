@@ -46,8 +46,8 @@ export function Nav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          solid ? "bg-[oklch(0.32_0.05_150_/_0.95)] backdrop-blur-md py-3" : "bg-transparent py-6"
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,padding] duration-300 will-change-[background-color] ${
+          solid ? "bg-[oklch(0.32_0.05_150_/_0.98)] py-3" : "bg-transparent py-6"
         }`}
       >
         <div className="container-x flex items-center justify-between">
