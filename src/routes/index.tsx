@@ -270,7 +270,7 @@ function CTA() {
           <p className="mt-6 text-white/75 text-lg max-w-2xl mx-auto">{t("home.cta_body")}</p>
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn btn-copper">{t("common.start_project")} <ArrowRight size={16} /></Link>
-            <a href="tel:+902164041055" className="btn btn-ghost-light"><Phone size={14} /> +90 216 404 10 55</a>
+            <Link to="/contact" className="btn btn-ghost-light">{t("nav.contact")}</Link>
           </div>
         </Reveal>
       </div>
