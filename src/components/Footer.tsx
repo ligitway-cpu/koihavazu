@@ -54,7 +54,6 @@ export function Footer() {
             Orhan Veli Kanık Cad. No:72, K:2<br/>34810 Martı Plaza, Kavacık<br/>Beykoz/İstanbul
           </address>
           <div className="mt-4 text-sm space-y-1">
-            <a href="tel:+902164041055" className="block hover:text-white">+90 216 404 10 55</a>
             <a href="mailto:info@isikpeyzajglobal.com" className="block hover:text-white">info@isikpeyzajglobal.com</a>
           </div>
         </div>
